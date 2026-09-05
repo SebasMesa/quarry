@@ -1,0 +1,382 @@
+## Table `profiles`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `username` | `text` |  |
+| `hunter_rank` | `text` |  |
+| `level` | `int4` |  |
+| `xp_total` | `int8` |  |
+| `archetype` | `text` |  |
+| `avatar_silhouette` | `text` |  |
+| `suit_palette` | `text` |  |
+| `visor` | `text` |  |
+| `theme_preferences` | `jsonb` |  |
+| `created_at` | `timestamptz` |  |
+| `updated_at` | `timestamptz` |  |
+
+## Table `stats`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `attribute_key` | `text` |  |
+| `value` | `int4` |  |
+| `level` | `int4` |  |
+| `xp_current` | `int4` |  |
+| `xp_required` | `int4` |  |
+
+## Table `sectors`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `key` | `text` |  Unique |
+| `name` | `text` |  |
+| `description` | `text` |  Nullable |
+| `icon` | `text` |  Nullable |
+| `color_role` | `text` |  Nullable |
+
+## Table `contracts`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `sector_id` | `uuid` |  |
+| `type` | `contract_type` |  |
+| `title` | `text` |  |
+| `description` | `text` |  Nullable |
+| `difficulty` | `int4` |  |
+| `reward_xp` | `int4` |  |
+| `reward_credits` | `int4` |  |
+| `status` | `contract_status` |  |
+| `recurrence` | `text` |  Nullable |
+| `streak_count` | `int4` |  |
+| `due_date` | `timestamptz` |  |
+| `completed_at` | `timestamptz` |  Nullable |
+| `created_at` | `timestamptz` |  |
+| `is_financial` | `bool` |  |
+
+## Table `companions`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `name` | `text` |  |
+| `mood` | `text` |  Nullable |
+| `level` | `int4` |  |
+| `xp` | `int4` |  |
+| `expedition_status` | `expedition_status` |  |
+| `last_expedition_at` | `timestamptz` |  Nullable |
+| `created_at` | `timestamptz` |  |
+
+## Table `achievements`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `key` | `text` |  |
+| `title` | `text` |  |
+| `description` | `text` |  Nullable |
+| `unlocked_at` | `timestamptz` |  Nullable |
+| `created_at` | `timestamptz` |  |
+
+## Table `accounts`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `name` | `text` |  |
+| `type` | `account_type` |  |
+| `balance` | `numeric` |  |
+| `created_at` | `timestamptz` |  |
+
+## Table `transactions`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `account_id` | `uuid` |  |
+| `amount` | `numeric` |  |
+| `type` | `tx_type` |  |
+| `category` | `text` |  |
+| `description` | `text` |  Nullable |
+| `date` | `timestamptz` |  |
+| `created_at` | `timestamptz` |  |
+
+## Table `budgets`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `category` | `text` |  |
+| `assigned` | `numeric` |  |
+| `spent` | `numeric` |  |
+
+## Table `savings_goals`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `title` | `text` |  |
+| `target` | `numeric` |  |
+| `saved` | `numeric` |  |
+| `monthly_contribution` | `numeric` |  |
+| `deadline` | `timestamptz` |  |
+| `created_at` | `timestamptz` |  |
+
+## Table `net_worth_history`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `month_date` | `date` |  |
+| `net_worth` | `numeric` |  |
+
+## Table `body_stats`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `metric` | `body_metric` |  |
+| `label` | `text` |  |
+| `value` | `numeric` |  |
+| `unit` | `text` |  |
+| `recorded_at` | `timestamptz` |  |
+| `created_at` | `timestamptz` |  |
+
+## Table `workouts`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `type` | `text` |  |
+| `duration_minutes` | `int4` |  |
+| `notes` | `text` |  Nullable |
+| `date` | `timestamptz` |  |
+| `created_at` | `timestamptz` |  |
+
+## Table `personal_records`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `lift` | `text` |  |
+| `current` | `numeric` |  |
+| `target` | `numeric` |  |
+| `unit` | `text` |  |
+| `achieved_at` | `timestamptz` |  |
+| `created_at` | `timestamptz` |  |
+
+## Table `routine_logs`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `profile_id` | `uuid` |  |
+| `contract_id` | `uuid` |  |
+| `log_date` | `date` |  |
+| `completed` | `bool` |  |
+
+## Custom Types / Enums
+
+### `contract_type`
+
+`mayor` | `menor` | `rutina`
+
+### `contract_status`
+
+`pendiente` | `completado` | `vencido`
+
+### `expedition_status`
+
+`disponible` | `en_expedicion` | `reparacion`
+
+### `account_type`
+
+`billetera` | `banco` | `inversion`
+
+### `tx_type`
+
+`ingreso` | `gasto`
+
+### `body_metric`
+
+`peso` | `medida` | `record_personal`
+
+## RLS Policies
+
+### `profiles`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own profile` | SELECT | public | PERMISSIVE | `(id = auth.uid())` | — |
+| `Users can update own profile` | UPDATE | public | PERMISSIVE | `(id = auth.uid())` | — |
+| `Users can insert own profile` | INSERT | public | PERMISSIVE | — | `(id = auth.uid())` |
+| `Users can delete own profile` | DELETE | public | PERMISSIVE | `(id = auth.uid())` | — |
+
+### `stats`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own stats` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own stats` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own stats` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own stats` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `contracts`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own contracts` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own contracts` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own contracts` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own contracts` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `companions`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own companions` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own companions` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own companions` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own companions` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `achievements`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own achievements` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own achievements` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own achievements` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own achievements` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `accounts`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own accounts` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own accounts` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own accounts` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own accounts` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `transactions`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own transactions` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own transactions` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own transactions` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own transactions` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `budgets`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own budgets` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own budgets` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own budgets` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own budgets` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `savings_goals`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own savings_goals` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own savings_goals` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own savings_goals` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own savings_goals` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `net_worth_history`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own net_worth_history` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own net_worth_history` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own net_worth_history` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own net_worth_history` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `body_stats`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own body_stats` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own body_stats` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own body_stats` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own body_stats` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `workouts`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own workouts` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own workouts` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own workouts` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own workouts` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `personal_records`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own personal_records` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own personal_records` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own personal_records` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own personal_records` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `routine_logs`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Users can view own routine_logs` | SELECT | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can insert own routine_logs` | INSERT | public | PERMISSIVE | — | `(profile_id = auth.uid())` |
+| `Users can update own routine_logs` | UPDATE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+| `Users can delete own routine_logs` | DELETE | public | PERMISSIVE | `(profile_id = auth.uid())` | — |
+
+### `sectors`
+
+| Policy | Command | Roles | Action | USING | WITH CHECK |
+|--------|---------|-------|--------|-------|------------|
+| `Anyone can view sectors` | SELECT | public | PERMISSIVE | `true` | — |
+

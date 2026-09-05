@@ -1,0 +1,366 @@
+@import "tailwindcss";
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-rust: var(--rust);
+  --color-patina: var(--patina);
+  --color-brass: var(--brass);
+  --color-amber: var(--amber);
+  --color-panel: var(--panel);
+  --color-panel-deep: var(--panel-deep);
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Rajdhani", "Big Shoulders Display", sans-serif;
+  --font-sans: "Barlow", system-ui, sans-serif;
+  --font-journal: "IBM Plex Mono", ui-monospace, monospace;
+  --font-handwriting: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+:root,
+[data-theme="cobre"],
+[data-theme="default"] {
+  --radius: 3px;
+  --background: oklch(0.198 0.008 62);
+  --foreground: oklch(0.914 0.018 84);
+  --panel: oklch(0.235 0.01 62);
+  --panel-deep: oklch(0.174 0.007 62);
+  --card: oklch(0.235 0.01 62);
+  --card-foreground: oklch(0.914 0.018 84);
+  --popover: oklch(0.235 0.01 62);
+  --popover-foreground: oklch(0.914 0.018 84);
+  --primary: oklch(0.643 0.108 61.5);
+  --primary-foreground: oklch(0.174 0.007 62);
+  --amber: oklch(0.643 0.108 61.5);
+  --brass: oklch(0.617 0.081 78);
+  --secondary: oklch(0.29 0.014 66);
+  --secondary-foreground: oklch(0.914 0.018 84);
+  --muted: oklch(0.29 0.014 66);
+  --muted-foreground: oklch(0.68 0.017 90);
+  --accent: oklch(0.32 0.02 66);
+  --accent-foreground: oklch(0.914 0.018 84);
+  --destructive: oklch(0.464 0.128 32);
+  --destructive-foreground: oklch(0.914 0.018 84);
+  --rust: oklch(0.464 0.128 32);
+  --patina: oklch(0.6 0.055 165);
+  --border: oklch(0.38 0.035 78 / 45%);
+  --input: oklch(0.38 0.035 78 / 35%);
+  --ring: oklch(0.643 0.108 61.5);
+}
+
+/* 🫐 Tema Mora Neón (Mora Silvestre / Synth) */
+[data-theme="mora"] {
+  --radius: 3px;
+  --background: #120b18;
+  --foreground: #f8e9fc;
+  --panel: #1c1324;
+  --panel-deep: #160e1e;
+  --card: #1c1324;
+  --card-foreground: #f8e9fc;
+  --popover: #1c1324;
+  --popover-foreground: #f8e9fc;
+  --primary: #f368e0;
+  --primary-foreground: #120b18;
+  --amber: #f368e0; /* Fucsia / Rosa neón primario */
+  --brass: #0abde3; /* Cyan / Azul eléctrico secundario */
+  --patina: #a55eea; /* Violeta eléctrico para sellados */
+  --rust: #feca57; /* Amarillo ámbar suave neón para alertas */
+  --secondary: #271a33;
+  --secondary-foreground: #f8e9fc;
+  --muted: #271a33;
+  --muted-foreground: #b397c4;
+  --accent: #331e44;
+  --accent-foreground: #f8e9fc;
+  --destructive: #ff5252;
+  --destructive-foreground: #ffffff;
+  --border: rgba(165, 94, 234, 0.32);
+  --input: rgba(165, 94, 234, 0.22);
+  --ring: #f368e0;
+}
+
+/* 🟢 Tema Terminal Fósforo (Matrix Retro) */
+[data-theme="fosforo"] {
+  --radius: 3px;
+  --background: #080d09;
+  --foreground: #d4ffd8;
+  --panel: #0e1710;
+  --panel-deep: #0a110c;
+  --card: #0e1710;
+  --card-foreground: #d4ffd8;
+  --popover: #0e1710;
+  --popover-foreground: #d4ffd8;
+  --primary: #00ff66;
+  --primary-foreground: #080d09;
+  --amber: #00ff66; /* Verde fósforo clásico */
+  --brass: #2ecc71; /* Verde esmeralda táctico */
+  --patina: #00f0ff; /* Cyan fósforo brillante */
+  --rust: #ff9f1c; /* Ámbar radiactivo */
+  --secondary: #142418;
+  --secondary-foreground: #d4ffd8;
+  --muted: #142418;
+  --muted-foreground: #6da377;
+  --accent: #193320;
+  --accent-foreground: #d4ffd8;
+  --destructive: #ff4757;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 255, 102, 0.28);
+  --input: rgba(0, 255, 102, 0.2);
+  --ring: #00ff66;
+}
+
+/* 🔵 Tema Ciber Hielo (Ártico Operativo) */
+[data-theme="hielo"] {
+  --radius: 3px;
+  --background: #090f17;
+  --foreground: #f0f9ff;
+  --panel: #0e1824;
+  --panel-deep: #0a121c;
+  --card: #0e1824;
+  --card-foreground: #f0f9ff;
+  --popover: #0e1824;
+  --popover-foreground: #f0f9ff;
+  --primary: #38bdf8;
+  --primary-foreground: #090f17;
+  --amber: #38bdf8; /* Azul cielo eléctrico */
+  --brass: #60a5fa; /* Azul zafiro ártico */
+  --patina: #2dd4bf; /* Turquesa glacial */
+  --rust: #f87171; /* Coral frío */
+  --secondary: #142436;
+  --secondary-foreground: #f0f9ff;
+  --muted: #142436;
+  --muted-foreground: #7ba3c4;
+  --accent: #1b3047;
+  --accent-foreground: #f0f9ff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(56, 189, 248, 0.3);
+  --input: rgba(56, 189, 248, 0.2);
+  --ring: #38bdf8;
+}
+
+/* ⚪ Tema Monocromo Táctico (Minimalista Militar) */
+[data-theme="monocromo"] {
+  --radius: 3px;
+  --background: #101010;
+  --foreground: #f5f5f5;
+  --panel: #181818;
+  --panel-deep: #131313;
+  --card: #181818;
+  --card-foreground: #f5f5f5;
+  --popover: #181818;
+  --popover-foreground: #f5f5f5;
+  --primary: #ffffff;
+  --primary-foreground: #101010;
+  --amber: #ffffff; /* Blanco tiza intenso */
+  --brass: #d4d4d4; /* Plata ceniza */
+  --patina: #a3a3a3; /* Titanio lustroso */
+  --rust: #fb7185; /* Carmesí táctico */
+  --secondary: #262626;
+  --secondary-foreground: #f5f5f5;
+  --muted: #262626;
+  --muted-foreground: #999999;
+  --accent: #333333;
+  --accent-foreground: #ffffff;
+  --destructive: #e11d48;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.25);
+  --input: rgba(255, 255, 255, 0.18);
+  --ring: #ffffff;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+}
+
+/* Scanlines CRT muy leves */
+@utility scanlines {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(to bottom,
+        color-mix(in oklab, black 22%, transparent) 0px,
+        color-mix(in oklab, black 22%, transparent) 1px,
+        transparent 1px,
+        transparent 3px);
+    opacity: 0.28;
+    z-index: 1;
+  }
+}
+
+/* Viñeta en esquinas */
+@utility vignette {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(120% 100% at 50% 40%,
+        transparent 45%,
+        color-mix(in oklab, black 55%, transparent) 100%);
+    z-index: 0;
+  }
+}
+
+@utility panel-base {
+  position: relative;
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* Remaches en esquinas */
+@utility riveted {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    pointer-events: none;
+    border-radius: 1px;
+    background-image:
+      radial-gradient(circle 2.5px at 0 0,
+        color-mix(in oklab, var(--brass) 85%, transparent) 98%,
+        transparent 100%),
+      radial-gradient(circle 2.5px at 100% 0,
+        color-mix(in oklab, var(--brass) 85%, transparent) 98%,
+        transparent 100%),
+      radial-gradient(circle 2.5px at 0 100%,
+        color-mix(in oklab, var(--brass) 85%, transparent) 98%,
+        transparent 100%),
+      radial-gradient(circle 2.5px at 100% 100%,
+        color-mix(in oklab, var(--brass) 85%, transparent) 98%,
+        transparent 100%);
+    background-repeat: no-repeat;
+    z-index: 2;
+  }
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  color: var(--muted-foreground);
+}
+
+@keyframes stamp-in {
+  0% {
+    transform: scale(1.6) rotate(-14deg);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(0.94) rotate(-8deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1) rotate(-8deg);
+    opacity: 1;
+  }
+}
+
+@utility stamp-in {
+  animation: stamp-in 320ms cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+
+@keyframes flicker-in {
+  0% {
+    opacity: 0.1;
+  }
+
+  40% {
+    opacity: 0.8;
+  }
+
+  55% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@utility flicker-in {
+  animation: flicker-in 420ms steps(6, end) both;
+}
+
+@utility font-journal {
+  font-family: var(--font-journal);
+}
+
+@utility font-handwriting {
+  font-family: var(--font-journal);
+}
+
+.notebook-ruled {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 35px,
+    rgba(255, 255, 255, 0.04) 35px,
+    rgba(255, 255, 255, 0.04) 36px
+  );
+  line-height: 36px;
+}
+
+@keyframes page-turn {
+  0% {
+    transform: perspective(1200px) rotateY(-8deg) scale(0.98);
+    opacity: 0.5;
+  }
+  100% {
+    transform: perspective(1200px) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@utility page-turn {
+  animation: page-turn 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
